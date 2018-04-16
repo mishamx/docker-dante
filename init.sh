@@ -1,6 +1,7 @@
 #!/usr/bin/env sh
 
 
-printf '$USERPASSWORD\$USERPASSWORD\n' | adduser $USERNAME
+adduser $USERNAME -D
+echo $USERNAME:$USERPASSWORD | chpasswd
 
 /usr/local/bin/ep -v /etc/sockd.conf -- /usr/local/sbin/sockd
