@@ -1,7 +1,10 @@
 For Telegram
 ============
 
+```bash
+docker run --name telegram-proxy -p 1080:1080 -e "USERNAME=user" -e "USERPASSWORD=password" mishamx/tdante:latest
 
+```
 
 
 
