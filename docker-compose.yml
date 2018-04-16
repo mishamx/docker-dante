@@ -1,0 +1,13 @@
+version: '3.3'
+
+services:
+
+    tproxy:
+        image: mishamx/tdante:latest
+        environment:
+            USERNAME: myproxyuser
+            USERPASSWORD: myproxyuserpassword
+            PORT_INTERNAL: 1080
+            IP_TO_MASK: "149.154.164.0/16"
+        ports:
+            - "1080:1080"

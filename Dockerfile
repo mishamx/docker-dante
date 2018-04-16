@@ -33,9 +33,16 @@ RUN set -x \
  && apk del --purge .build-deps
 
 # Default configuration
-COPY sockd.conf /etc/
+COPY sockd-source.conf /etc/sockd.conf
+COPY ep-linux /usr/local/bin/ep
+COPY init.sh /init.sh
 
-EXPOSE 1080
 
-ENTRYPOINT ["dumb-init"]
-CMD ["sockd"]
+ENV USERNAME myproxyuser
+ENV USERPASSWORD myproxyuserpassword
+ENV PORT_INTERNAL 1080
+ENV IP_TO_MASK 149.154.164.0/16
+
+ENTRYPOINT ["/usr/local/bin/dumb-init"]
+
+CMD ["/init.sh"]
